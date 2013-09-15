@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <title>Radiance</title>
+        <link href="style.css" rel="stylesheet" type="text/css" media="all">
+    </head>
+    <body>
+        
+        <h1>Теоретические основы.</h1>
+        <h2>Расчёт мощности экспозиционной дозы гамма-излучения.</h2>
+        
+        <div class="container">
+            <h3>Расчётная схема:</h3>
+            <img class="formula" src="images/scheme3.png" alt="Расчётная схема"/>
+            <p>
+                <span class="footnote">1 - радиационная защита;</span>
+                <span class="footnote">2 - источник гамма-излучения;</span>
+                <span class="footnote">d - толщина радиационной защиты;</span>
+                <span class="footnote">M - расчётная точка;</span>
+                <span class="footnote">R - расстояние от центра источника до расчётной точки.</span>
+            </p>
+            <div class="return_menu">
+                <a class="back" href="index.html">Вернуться к оглавлению</a>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h3>Расчётная формула:</h3>
+            <img class="formula" src="images/math/formula1.png" alt="P(M) = \frac{Q}{R^2} \sum_{j=1}^{N} K\overset{\ast}{\gamma}(E_{j})n(E_{j})e^{-\mu\rho(E_{j}\rho d)}B(\mu\rho(E_{j})\rho d)"/>
+            <!-- Расшифровка формулы -->
+            <table class="formula_interp">
+                <tbody>
+                    <tr>
+                        <td class="odd"><img src="images/math/P(M).png" alt="P(M)"/></td>
+                        <td class="odd">мощность экспозиционной дозы в точке <img src="images/math/M.png" alt="M"/>, Р/ч;</td>
+                    </tr>
+                    <tr>
+                        <td class="even"><img src="images/math/d.png" alt="d"/></td>
+                        <td class="even">толщина защиты, см;</td>
+                    </tr>
+                    <tr>
+                        <td class="odd"><img src="images/math/Q.png" alt="Q"/></td>
+                        <td class="odd">активность источника, мКи;</td>
+                    </tr>
+                    <tr>
+                        <td class="even"><img src="images/math/Kgamma(Ej).png" alt="K\overset{\ast}{\gamma}(E_{j})"/></td>
+                        <td class="even">гамма-постоянная для гамма-излучения с энергией <img src="images/math/Ej.png" alt="E_j"/>;</td>
+                    </tr>
+                    <tr>
+                        <td class="odd"><img src="images/math/rho.png" alt="\rho"/></td>
+                        <td class="odd">плотность материала защиты, г/см<sup>3</sup>;</td>
+                    </tr>
+                    <tr>
+                        <td class="even"><img src="images/math/n(Ej).png" alt="n(E_j)"/></td>
+                        <td class="even">выход гамма-излучения с энергией <img src="images/math/Ej.png" alt="E_j"/>, абс. единицы;</td>
+                    </tr>
+                    <tr>
+                        <td class="odd"><img src="images/math/murho(Ej).png" alt="\mu\rho(E_j)"/></td>
+                        <td class="odd">массовый коэффициент ослабления излучения с энергией <img src="images/math/Ej.png" alt="E_j"/>, см<sup>2</sup>/г;</td>
+                    </tr>
+                    <tr>
+                        <td class="even"><img src="images/math/B(murho(Ej)rhod.png" alt="B(\mu\rho(E_j)\rho d"/></td>
+                        <td class="even">дозовый фактор накопления гамма-излучения с энергией <img src="images/math/Ej.png" alt="E_j"/>, абс. единицы;</td>
+                    </tr>
+                    <tr>
+                        <td class="odd"><img src="images/math/R.png" alt="R"/></td>
+                        <td class="odd">расстояние от центра источника до расчётной точки, см;</td>
+                    </tr>
+                    <tr>
+                        <td class="combo_breaker" colspan="2">Примечания.<td>
+                    </tr>
+                    <!-- Примечания -->
+                    <tr>
+                        <td class="summary_odd" colspan="2">Суммирование в формуле проводится по всем линиям спектра излучения <img src="images/math/(E1E2...En).png" alt="(E_1,E_2, \cdots E_n"/>;</td>
+                    </tr>
+                    <tr>
+                        <td class="summary_even" colspan="2">гамма-постоянная <img src="images/math/Kgamma.png" alt="K\overset{\ast}{\gamma}"/> взята из справочника "Защита от ионизирующих излучений" (Атомиздат);</td>
+                    </tr>
+                    <tr>
+                        <td class="summary_odd" colspan="2">массовые коэффициенты ослабления излучения взяты из справочника "Сечения взаимодействия гамма-излучения (для энергий 0,001-100 Мэв и элементов с 1 по 100)" (Los Alamos Scientific Laboratory, New Mexico);</td>
+                    </tr>
+                    <tr>
+                        <td class="summary_even" colspan="2">факторы накопления взяты из справочников "Защита от ионизирующих излучений" (Атомиздат), "Справочник по радиационной безопасности" (Энергоатомиздат);</td>
+                    </tr>
+                    <tr>
+                        <td class="summary_odd" colspan="2">интерполяция <img src="images/math/Kgamma.png" alt="K\overset{\ast}{\gamma}"/>, <img src="images/math/murho.png" alt="\mu\rho"/> и <img src="images/math/B.png" alt="B"/> проводится с помощью входящего в состав билблиотеки SciPy (модуль scipy.interpolate) пакета LAPACK — Linear Algebra PACKage (разработка <span class="author">Univ. of Tennessee; Univ. of California, Berkeley; Univ. of Colorado Denver; и NAG Ltd.</span>), методом кубических сплайнов.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="return_menu">
+                <a class="back" href="index.html">Вернуться к оглавлению</a>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h3>Литература:</h3>
+            <p class="reference">
+                <span class="author">Сторм Э., Исраэль Х.</span>
+                <span class="title">"Сечения взаимодействия гамма-излучения (для энергий 0,001-100 Мэв и элементов с 1 по 100)". Справочник. Перевод с английского.</span>
+                <span class="publishing_info">Атомиздат, Москва, 1973. 256 страниц.</span>
+                <span class="misc_info">Storm Ellery, Israel Harvey. "Photon cross sections from 0,001 to 100 Mev for elements 1 through 100". Los Alamos Scientific Laboratory, New Mexico, 1967 June.</span>
+            </p>
+            <p class="reference">
+                <span class="author">Козлов В. Ф.</span>
+                <span class="title">"Справочник по радиационной безопасности", 4-е издание, переработанное и дополненное.</span>
+                <span class="publishing_info">Энергоатомиздат, Москва, 1991. 352 страниц. ISBN 5-283-03063-6.</span>
+            </p>
+            <p class="reference">
+                <span class="author">Кимель Л. Р., Машкович В. П.</span>
+                <span class="title">"Защита от ионизирующих излучений". Справочник.</span>
+                <span class="publishing_info">Атомиздат, Москва, 1966.</span>
+            </p>
+            <p class="reference">
+                <span class="author">British Standarts House</span>
+                <span class="title">Recommendation for "Data on shielding from ionizing radiation. Part 1. Shielding from gamma radiation"</span>
+                <span class="publishing_info">British Standarts House, London, 1966.</span>
+                <span class="misc_info">B.S. 4094 : Part 1 : 1966.</span>
+            </p>
+            <div class="return_menu">
+                <a class="back" href="index.html">Вернуться к оглавлению</a>
+            </div>
+        </div>
+
+    </body>
+</html>

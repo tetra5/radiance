@@ -1,0 +1,37 @@
+QToolBox::tab {
+	background-color: rgb(225, 225, 225);
+	background-image: url(:/Radiance/icons/bullet_toggle_plus.png);
+	background-position: center left;
+	background-repeat: no-repeat;
+	padding-left: 15px;
+	color: rgb(0, 0, 0);
+	text-decoration: underline;
+}
+
+QToolBox::tab:selected {
+	background-color: rgb(125, 125, 125);
+	color: rgb(255, 255, 255);
+	background-image: url(:/Radiance/icons/bullet_toggle_minus.png);
+	text-decoration: none;
+}
+
+QToolBox::tab:hover {
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+	background-image: url(:/Radiance/icons/bullet_go.png);
+}
+
+QToolBox::tab:selected:hover {
+	background-color: rgb(125, 125, 125);
+	color: rgb(255, 255, 255);
+	background-image: url(:/Radiance/icons/bullet_toggle_minus.png);
+}
+
+QSplitter::handle {
+	image: url(:/Radiance/icons/bullet_black.png);
+}
+
+QSplitter::handle:pressed {
+	image: url(:/Radiance/icons/bullet_blue.png);
+}
+

@@ -1,0 +1,28 @@
+<RCC>
+  <qresource prefix="Radiance">
+    <file>icons/layers.png</file>
+    <file>icons/shape_square.png</file>
+    <file>styles/default.qss</file>
+    <file>icons/compress.png</file>
+    <file>icons/calculator.png</file>
+    <file>splashscreen.png</file>
+    <file>icons/page_white_add.png</file>
+    <file>icons/disk.png</file>
+    <file>icons/bullet_go.png</file>
+    <file>icons/bullet_black.png</file>
+    <file>icons/bullet_blue.png</file>
+    <file>icons/page_white_edit.png</file>
+    <file>icons/error.png</file>
+    <file>icons/book.png</file>
+    <file>icons/database_save.png</file>
+    <file>icons/report.png</file>
+    <file>icons/delete.png</file>
+    <file>icons/help.png</file>
+    <file>icons/door_in.png</file>
+    <file>icons/bullet_toggle_minus.png</file>
+    <file>icons/bullet_toggle_plus.png</file>
+    <file>icons/information.png</file>
+    <file>icons/page_save.png</file>
+    <file>icons/shield.png</file>
+  </qresource>
+</RCC>

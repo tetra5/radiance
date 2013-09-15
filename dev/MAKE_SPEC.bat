@@ -1,0 +1,1 @@
+..\..\pyinstaller\Makespec.py ..\radiance.py --windowed --out=..\..\build --upx --icon=..\resources/icons/shield.ico

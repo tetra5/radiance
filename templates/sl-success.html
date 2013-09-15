@@ -1,0 +1,232 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+		<title>Radiance {{ version }}</title>
+		<style type="text/css" media="all">
+			
+			body {
+				background-color: #fff;
+				font-family: serif;
+			}
+
+			table.p_list {
+				border: 1px solid black;
+				border-collapse: collapse;
+				width: 100%;
+				margin: 0px;
+			}
+
+				table.p_list td, table.p_list th {
+					padding: 5px;
+					text-align: center;
+				}
+
+					table.p_list td.even {
+						background-color: #fff;
+					}
+
+					table.p_list td.odd {
+						background-color: #efefef;
+					}
+
+					table.p_list td.summary {
+						border-top: 1px solid black;
+						font-weight: bold;
+						text-align: right;
+					}
+
+				table.p_list th {
+					background-color: #000;
+					color: #fff;
+				}
+
+					table.p_list th.grey {
+						background-color: #ddd;
+						color: #000;
+					}
+
+			div.content {
+				width: 100%;
+				margin: 0 auto;
+				padding-top: 0px;
+				margin-top: 0px;
+			}
+
+			h1 {
+				text-align: center;
+				display: block;
+				border-bottom: 1px solid black;
+				font-variant: small-caps;
+			}
+
+			h2 {
+				display: block;
+				text-align: center;
+			}
+
+			div.parameters {
+
+			}
+
+				div.parameters ul {
+					list-style-type: none;
+					background-color: #eee;
+					margin: 0px;
+					padding: 10px;
+				}
+
+					div.parameters ul li {
+						margin: 0px;
+						padding: 5px;
+					}
+
+						div.parameters ul li span {
+							font-weight: bold;
+							background-color: #ddd;
+							padding: 5px;
+							display: inline-block;
+							margin-left: 10px;
+						}
+
+			table.parameters_tbl {
+				margin: 0px;
+				padding: 0px;
+				border-collapse: collapse;
+				width: 100%;
+				border: 1px solid black;
+				margin-bottom: 10px;
+			}
+
+				table.parameters_tbl th {
+						background-color: #000;
+						color: #fff;
+						padding: 5px;
+					}
+
+				table.parameters_tbl td {
+					padding: 10px;
+					text-align: center;
+				}
+
+					table.parameters_tbl td.even {
+						background-color: #fff;
+					}
+
+					table.parameters_tbl td.odd {
+						background-color: #efefef;
+					}
+			
+			span.datetime {
+				color: #aaa;
+				padding: 5px;
+				border: 1px solid #ccc;
+			}
+
+			span.lightgray {
+				color: #aaa;
+				padding: 2px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<h1>Расчёт мощности экспозиционной дозы гамма-излучения.</h1>
+
+			<!-- Дата и время отчёта -->
+			<span class="datetime">Отчёт от {{ date|datetimeformat }}</span>
+
+			<!-- Исходные данные -->
+			<h2>Исходные данные.</h2>
+			
+			<table class="parameters_tbl">
+				<thead>
+					<tr>
+						<th>Параметры источника</th>
+						<th>Параметры защиты</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr valign="top">
+						<td>
+							<div class="parameters">
+								<ul>
+									<li>Нуклид: <span>{{ nuclide.rus }}-{{ nuclide.a_mass }}</span></li>
+									<li>Активность: <span>{{ q }} мКи</span></li>
+								</ul>
+							</div>
+						</td>
+						<td>
+							<div class="parameters">
+								<ul>
+									<li>Материал: <span>{{ material.title }}</span></li>
+									<li>Плотность: <span>{{ density }} г/см³</span></li>
+									<li>Толщина: <span>{{ d }} см</span></li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="parameters_tbl">
+				<tbody>
+					<tr>
+						<td>
+							<div class="parameters">
+								<ul>
+									<li>Расстояние между источником и рассчётной точкой: <span>{{ r }} см</span></li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="p_list">
+				<thead>
+					<tr>
+						<th class="grey">Линия спектра гамма-излучения нуклида, №</th>
+						<th class="grey">Энергия, Мэв</th>
+						<th class="grey">Выход, абс.</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for line in nuclide.spectre %}
+					<tr>
+						<td class="{{ loop.cycle('odd', 'even') }}">{{ loop.index }}</td> 
+						<td class="{{ loop.cycle('odd', 'even') }}">{{ line[0] }}</td> 
+						<td class="{{ loop.cycle('odd', 'even') }}">{{ line[1] }}</td> 
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			
+			<!-- Результаты -->
+			<h2>Результаты.</h2>
+			<table class="p_list">
+				<thead>
+					<tr>
+						<th>Линия спектра гамма-излучения, №</th>
+						<th>Порциальная мощность, мЗв/ч</th>
+						<th>Порциальная мощность, Р/ч</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for p in p_list %}
+					<tr>
+						<td class="{{ loop.cycle('odd', 'even') }}">{{ loop.index }}</td>
+						<td class="{{ loop.cycle('odd', 'even') }}">{{ p.sievert|round(5) }}</td>
+						<td class="{{ loop.cycle('odd', 'even') }}">{{ p.roentgen|round(5) }}</td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td colspan="3" class="summary">Суммарная мощность: {{ p_sievert|round(5) }} мЗв/ч <span class="lightgray">{{ p|round(5) }} Р/ч</span></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</body>
+</html>

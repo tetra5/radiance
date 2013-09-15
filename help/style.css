@@ -1,0 +1,165 @@
+body {
+	font-family: serif;
+}
+
+a {
+    display: inline-block;
+    padding: 5px;
+    text-decoration: none;
+    color: blue;
+    background-color: #fff;
+    font-weight: bold;
+}  
+          
+    a:hover {
+        background-color: blue;
+        color: white;
+    }
+
+    a.back {
+        padding: 4px;
+        padding-left: 24px;
+        background: transparent url('images/house.png') no-repeat 4px;
+        background-color: #fafafa;
+        display: inline-block;
+        border: 1px solid #fff;
+        text-decoration: underline;
+        color: black;
+    }
+
+        a.back:hover {
+            background-image: url('images/house_go.png');
+            text-decoration: underline;
+            border-color: #ddd;
+            color: #333;
+        }
+
+h3, h4, h5, h6 {
+    display: block;
+    border-bottom: 1px dotted black;	
+}
+
+h1, h2 {
+	text-align: center;
+}
+
+h1 {
+    font-variant: small-caps;
+}
+
+span.footnote {
+    display: block;
+}
+
+p.reference {
+
+}
+
+span.author {
+    font-style: italic;
+    font-weight: bold;
+}
+    
+span.title {
+        
+}
+    
+p.reference span.publishing_info {
+    background-color: #eaeaea;
+    padding: 2px;
+}
+    
+p.reference span.misc_info {
+    font-size: 0.9em;
+    color: #777;
+}
+
+div.main_menu {
+    text-align: center;
+    padding-top: 100px;
+}
+
+    div.main_menu a {
+        padding: 10px;
+        padding-left: 34px;
+        background: transparent url('images/page.png') no-repeat 10px;
+        border: 1px solid #ccc;
+        margin: 10px;
+        color: #000;
+        margin-left: 5px;
+
+    }
+
+    div.main_menu a:hover {
+        background-image: url('images/page_go.png');
+        text-decoration: underline;
+        border-color: #ddd;
+    }
+
+img.formula {
+    margin: 0 auto;
+    padding: 0;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+table.formula_interp {
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+    table.formula_interp tbody tr td img {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    table.formula_interp tr {
+
+    }
+
+        table.formula_interp tbody tr td {
+            padding: 5px;
+        }
+
+            table.formula_interp tbody tr td.odd {
+                background-color: #efefef;
+            }
+
+            table.formula_interp tbody tr td.even {
+                
+            }
+
+            table.formula_interp tbody tr td.summary_odd {
+                background-color: #efefef;
+            }
+
+            table.formula_interp tbody tr td.summary_even {
+                
+            }
+
+            table.formula_interp tbody tr td.combo_breaker {
+                padding: 10px;
+                font-weight: bold;
+                text-align: center;
+            }
+
+div.return_menu {
+    text-align: right;
+}
+
+div.container {
+
+}
+
+    div.container img {
+        display: inline-block;
+    }
+
+    div.container p {
+        display: inline-block;
+    }
