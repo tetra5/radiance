@@ -1,7 +1,8 @@
 Radiance
 ========
 
-Work in progress.
+**This was one of my earlier projects and is a living example of how poorly
+organized my code was.**
 
 Requirements
 ------------
